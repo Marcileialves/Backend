@@ -1,56 +1,39 @@
 import express from 'express';
-import personagem from './dados.js'
+import personagem from './dados.js';
+import { BuscarUFsbyNome, BuscarbyID, buscarUfs } from './servicos/servicos.js';
 
-const app = express()
+const app = express();
 
-
-const BuscarUFs = (nomeUfs) => {
-    return personagem.filter(uf => uf.nome.toLowerCase().includes(nomeUfs.toLowerCase()))
-}
-
-app.get('/ufs', (req,res) => {
+// Rota para buscar UFs por nome (query string)
+app.get('/ufs', (req, res) => {
     const nomeUfs = req.query.busca;
-    const Buscador = nomeUfs ? BuscarUFs(nomeUfs) : personagem;
+    const resultado = nomeUfs ? BuscarUFsbyNome(nomeUfs) : personagem);
 
-    if(Buscador.length > 0){
-        res.json(Buscador)
+    if (resultado.length > 0) {
+        res.json(resultado);
+    } else {
+        res.status(404).json({ erro: 'Não encontramos o valor' });
     }
-    else{
-        res.status(404).send({'Erro': 'Não encontramos o valor'})
-    }
-})
-app.get('/ufs/:iduf',  (req,res) =>{
-    let idUF = parseInt(req.params.iduf)
-    let mensagemErro = "";
-    let uf;
-    if(!(isNaN(idUF))){
-        let uf = personagem.find( num => num.id === idUF )
-
-        if(!uf){
-            mensagemErro = "UFS não encontrada"
-        }
-
-        else{
-            mensagemErro = "Requisisão invalidada"
-        }
-        if(uf) {
-            res.json(uf)
-        }
-        else{
-            res.status(404).json({"Erro":mensagemErro})
-    
-        }
-    
-    }
-
 });
 
-app.listen(8080,()=>{
-    let data = new Date()
-    console.log('Servidor iniciado em' + data)
+// Rota para buscar UF por ID
+app.get('/ufs/:iduf', (req, res) => {
+    const iduf = parseInt(req.params.iduf);
+
+    if (isNaN(iduf)) {
+        return res.status(400).json({ erro: 'ID inválido' });
+    }
+
+    const uf = BuscarbyID(iduf);
+
+    if (uf) {
+        res.json(uf);
+    } else {
+        res.status(404).json({ erro: 'UF não encontrada' });
+    }
 });
 
-
-
-
-
+// Iniciar servidor
+app.listen(8080, () => {
+    console.log('Servidor iniciado em http://localhost:8080');
+});

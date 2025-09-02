@@ -3,6 +3,15 @@ const personagem = [{
     nome: 'Marcilei Alves',
     idade: 16,
 },
+{   id: 98,
+    nome: 'Marcilei Alves',
+    idade: 16,
+},
+
+{   id: 97,
+    nome: 'Marcilei Alves',
+    idade: 16,
+},
 {   id:91,
     nome: "Luan Carlos",
     idade: 16
