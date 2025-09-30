@@ -1,4 +1,4 @@
-import personagem from "dados.js"
+import personagem from "../dados.js"
 
 export const buscarUfs = ()=>{
     return personagem;

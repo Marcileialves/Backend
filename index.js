@@ -1,6 +1,6 @@
 import express from 'express';
 import personagem from './dados.js';
-import { BuscarUFsbyNome, BuscarbyID, buscarUfs } from './servicos/servicos.js';
+import { BuscarUFsbyNome, BuscarbyID } from './serviços/servicos.js';
 
 const app = express();
 
@@ -35,5 +35,5 @@ app.get('/ufs/:iduf', (req, res) => {
 
 // Iniciar servidor
 app.listen(8080, () => {
-    console.log('Servidor iniciado em http://localhost:8080');
+    console.log('Servidor iniciado em:');
 });
