@@ -7,7 +7,7 @@ const app = express();
 // Rota para buscar UFs por nome (query string)
 app.get('/ufs', (req, res) => {
     const nomeUfs = req.query.busca;
-    const resultado = nomeUfs ? BuscarUFsbyNome(nomeUfs) : personagem);
+    const resultado = nomeUfs ? BuscarUFsbyNome(nomeUfs) : personagem;
 
     if (resultado.length > 0) {
         res.json(resultado);

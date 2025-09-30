@@ -1,23 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "<!DOCTYPE html>\r <html lang=\"en\">\r <head>\r     <meta charset=\"UTF-8\">\r     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r     <title>Document</title>\r     <link rel=\"stylesheet\" href=\"Css_past.css\">\r </head>\r <body>",
   "main": "index.js",
-  "type":"module" ,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Marcileialves/Backend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Marcileialves/Backend/issues"
-  },
-  "homepage": "https://github.com/Marcileialves/Backend#readme",
+  "description": "",
   "dependencies": {
     "express": "^5.1.0"
   }
